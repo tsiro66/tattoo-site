@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF, Center } from '@react-three/drei';
 import * as THREE from 'three';
@@ -10,14 +10,16 @@ export default function TorsoModel() {
   const outerRef = useRef<THREE.Group>(null);
   const rotationTarget = useRef(0);
 
-  useEffect(() => {
-    scene.matrixAutoUpdate = true;
-    scene.rotation.set(1.5, -1.5, 0);
-    scene.scale.set(1, 1, 1);
-    scene.position.set(0, 0, 0);
-    scene.updateMatrix();
+  // Clone scene and apply transforms synchronously before render
+  const preparedScene = useMemo(() => {
+    const clone = scene.clone(true);
+    clone.matrixAutoUpdate = true;
+    clone.rotation.set(1.5, -1.5, 0);
+    clone.scale.set(1, 1, 1);
+    clone.position.set(0, 0, 0);
+    clone.updateMatrixWorld(true);
 
-    scene.traverse((child) => {
+    clone.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         child.material = new THREE.MeshStandardMaterial({
           roughness: 0.3,
@@ -27,6 +29,8 @@ export default function TorsoModel() {
         child.receiveShadow = true;
       }
     });
+
+    return clone;
   }, [scene]);
 
   useEffect(() => {
@@ -51,9 +55,9 @@ export default function TorsoModel() {
 
   return (
     <group ref={outerRef}>
-      <Center  position={[0, -0.3, 0]}>
+      <Center>
         <group scale={0.06} rotation={[-Math.PI / 2, 0, 0]}>
-          <primitive object={scene} dispose={null} />
+          <primitive object={preparedScene} dispose={null} />
         </group>
       </Center>
     </group>
