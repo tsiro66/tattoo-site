@@ -1,20 +1,45 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+
 export default function Navbar() {
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.set(navRef.current, { opacity: 0, y: -30 });
+
+    const onReady = () => {
+      gsap.to(navRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: 0.3,
+      });
+    };
+
+    window.addEventListener('preloader-done', onReady);
+    return () => window.removeEventListener('preloader-done', onReady);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 grid grid-cols-3 items-center px-8 py-5 uppercase mix-blend-difference text-white">
+    <nav
+      ref={navRef}
+      className="fixed top-0 left-0 right-0 z-50 grid grid-cols-3 items-center px-8 py-5 uppercase mix-blend-difference text-white"
+    >
       {/* Left — Brand */}
       <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex flex-col text-left cursor-pointer">
         <span className="font-[family-name:var(--font-cinzel)] text-base md:text-lg tracking-widest text-white leading-tight">
           Da Vinci
         </span>
-        <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.25em] text-white/70">
+        <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.25em] text-white/70 uppercase">
           Tattoo Studio · Rhodes
         </span>
       </button>
 
       {/* Center — Nav links */}
-      <div className="hidden md:flex items-center justify-center gap-40">
+      <div className="hidden md:flex items-center justify-center gap-60">
         <a href="#artists" className="text-xs tracking-widest text-white/60 hover:text-white transition-colors">
           Artists
         </a>
@@ -30,7 +55,7 @@ export default function Navbar() {
       <div className="flex justify-end">
         <a
           href="#book"
-          className="flex items-center gap-2 text-xs tracking-widest text-white/60 hover:text-white transition-colors"
+          className="flex items-center gap-2 text-xs tracking-widest text-white/70 hover:text-white transition-colors"
         >
           Book
           <svg

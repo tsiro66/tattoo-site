@@ -6,10 +6,12 @@ import Artists from './components/Artists';
 import Studio from './components/Studio';
 import OurWork from './components/OurWork';
 import Footer from './components/Footer';
+import Preloader from './components/Preloader';
 
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
+      <Preloader />
       <SmoothScroll />
       <Navbar />
       <TorsoScene />
