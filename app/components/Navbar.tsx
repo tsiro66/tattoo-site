@@ -1,25 +1,27 @@
+'use client';
+
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 grid grid-cols-3 items-center px-8 py-5 bg-transparent uppercase">
+    <nav className="fixed top-0 left-0 right-0 z-50 grid grid-cols-3 items-center px-8 py-5 uppercase mix-blend-difference text-white">
       {/* Left — Brand */}
-      <a href="/" className="flex flex-col">
-        <span className="font-[family-name:var(--font-cinzel)] text-base md:text-lg tracking-widest text-black leading-tight">
+      <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex flex-col text-left cursor-pointer">
+        <span className="font-[family-name:var(--font-cinzel)] text-base md:text-lg tracking-widest text-white leading-tight">
           Da Vinci
         </span>
-        <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.25em] text-black/50">
+        <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.25em] text-white/70">
           Tattoo Studio · Rhodes
         </span>
-      </a>
+      </button>
 
       {/* Center — Nav links */}
       <div className="hidden md:flex items-center justify-center gap-40">
-        <a href="#artists" className="text-xs tracking-widest text-black/60 hover:text-black transition-colors">
+        <a href="#artists" className="text-xs tracking-widest text-white/60 hover:text-white transition-colors">
           Artists
         </a>
-        <a href="#studio" className="text-xs tracking-widest text-black/60 hover:text-black transition-colors">
+        <a href="#studio" className="text-xs tracking-widest text-white/60 hover:text-white transition-colors">
           Studio
         </a>
-        <a href="#work" className="text-xs tracking-widest text-black/60 hover:text-black transition-colors">
+        <a href="#work" className="text-xs tracking-widest text-white/60 hover:text-white transition-colors">
           Our Work
         </a>
       </div>
@@ -28,7 +30,7 @@ export default function Navbar() {
       <div className="flex justify-end">
         <a
           href="#book"
-          className="flex items-center gap-2 text-xs tracking-widest text-black/60 hover:text-black transition-colors"
+          className="flex items-center gap-2 text-xs tracking-widest text-white/60 hover:text-white transition-colors"
         >
           Book
           <svg

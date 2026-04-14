@@ -8,6 +8,13 @@ export default function HeroSection() {
         </h1>
       </div>
 
+      {/* Left side text */}
+      <div className="absolute left-8 bottom-[30%] z-10 max-w-lg">
+        <p className="font-(family-name:--font-cinzel) tracking-widest text-lg md:text-2xl leading-relaxed text-black/70">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+
       {/* Scroll hint */}
       <p className="absolute bottom-8 right-8 z-10 tracking-widest font-bold uppercase text-black/70">
         Scroll to see more

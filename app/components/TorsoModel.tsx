@@ -68,8 +68,8 @@ export default function TorsoModel() {
       bbox.getCenter(center);
       bbox.getSize(size);
 
-      const decalPosition = new THREE.Vector3(19.5, -40, 20);
-      const decalSize = new THREE.Vector3(25, 20, 10);
+      const decalPosition = new THREE.Vector3(21.5, -37, 20);
+      const decalSize = new THREE.Vector3(35, 30, 11);
 
       // Early exit: skip meshes whose bbox doesn't overlap the projector box
       const halfSize = decalSize.clone().multiplyScalar(0.5);
@@ -101,7 +101,7 @@ export default function TorsoModel() {
       const decalMaterial = new THREE.MeshStandardMaterial({
         map: tattooTexture,
         transparent: true,
-        opacity: 0.9,
+        opacity: 0.5,
         depthTest: false,
         depthWrite: false,
         polygonOffset: true,

@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection';
 import Artists from './components/Artists';
 import Studio from './components/Studio';
 import OurWork from './components/OurWork';
+import Footer from './components/Footer';
 
 export default function Home() {
   return (
@@ -12,10 +13,19 @@ export default function Home() {
       <SmoothScroll />
       <Navbar />
       <TorsoScene />
-      <HeroSection />
-      <Artists />
-      <Studio />
-      <OurWork />
+
+      {/* Content sits above the fixed footer (z-10) */}
+      <div className="relative z-10">
+        <HeroSection />
+        <Artists />
+        <Studio />
+        <OurWork />
+      </div>
+
+      {/* Spacer so you can scroll to reveal the footer */}
+      <div className="relative z-10 h-[70vh]" />
+
+      <Footer />
     </main>
   );
 }
