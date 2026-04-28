@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Artists() {
   const artists = [
     { name: 'Artist Name', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus.' },
-    { name: 'Artist Name', desc: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui.' },
+    { name: 'Artist Name 2', desc: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui.' },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
